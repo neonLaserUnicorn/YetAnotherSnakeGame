@@ -19,6 +19,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_startButton_clicked();
+    void on_scoreButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
