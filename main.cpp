@@ -2,6 +2,7 @@
 #include "mainwindow.h"
 
 #include <QApplication>
+#include <QTimer>
 
 
 int main(int argc, char *argv[])
@@ -11,5 +12,6 @@ int main(int argc, char *argv[])
     w.setWindowTitle("Yet Another Snake Game");
 
     w.show();
+        w.menuAnimation();
     return a.exec();
 }

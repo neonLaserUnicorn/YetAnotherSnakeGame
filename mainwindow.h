@@ -18,13 +18,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    void menuAnimation();
 private slots:
     void on_startButton_clicked();
     void on_scoreButton_clicked();
 
 private:
     Ui::MainWindow *ui;
+    qreal x1BackgroundOffset = 0.0;
 };
 
 #endif // MAINWINDOW_H
