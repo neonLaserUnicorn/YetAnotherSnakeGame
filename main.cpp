@@ -12,6 +12,6 @@ int main(int argc, char *argv[])
     w.setWindowTitle("Yet Another Snake Game");
 
     w.show();
-        w.menuAnimation();
+//        w.menuAnimation();
     return a.exec();
 }

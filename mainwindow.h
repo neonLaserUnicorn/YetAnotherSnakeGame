@@ -3,6 +3,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "gamescreen.h"
 
 
 
@@ -26,6 +27,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     qreal x1BackgroundOffset = 0.0;
+    GameScreen* gs = nullptr;
 };
 
 #endif // MAINWINDOW_H

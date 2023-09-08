@@ -1,5 +1,6 @@
 
 #include "mainwindow.h"
+#include "gamescreen.h"
 #include "ui_mainwindow.h"
 
 
@@ -13,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete gs;
 }
 
 void MainWindow::menuAnimation()
@@ -31,6 +33,11 @@ void MainWindow::on_startButton_clicked()
 {
     qDebug("Начало игры");
     //TODO: ПЕРЕХОД НА ЭКРАН НАЧАЛА ИГРЫ
+    gs = new GameScreen(nullptr, this->geometry());
+
+    gs->show();
+    gs->activateWindow();
+//    this->close();
 }
 
 void MainWindow::on_scoreButton_clicked()
