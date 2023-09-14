@@ -15,10 +15,10 @@ public:
     explicit GameScreen(QWidget *parent = nullptr, int width = 300, int height = 300);
     explicit GameScreen(QWidget *parent = nullptr, const QRect& geometry = QRect());
     ~GameScreen();
+    static const int OFFSET = 10;
 
 private:
     Ui::GameScreen *ui;
-    const int OFFSET = 10;
 
 };
 

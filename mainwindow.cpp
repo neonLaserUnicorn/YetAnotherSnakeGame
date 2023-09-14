@@ -37,6 +37,7 @@ void MainWindow::on_startButton_clicked()
 
     gs->show();
     gs->activateWindow();
+    this->hide();
 //    this->close();
 }
 
