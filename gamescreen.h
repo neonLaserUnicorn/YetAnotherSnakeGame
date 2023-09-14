@@ -2,7 +2,8 @@
 #define GAMESCREEN_H
 
 #include <QWidget>
-
+#include <QTimer>
+class Apple;
 namespace Ui {
 class GameScreen;
 }
@@ -18,8 +19,12 @@ public:
     static const int OFFSET = 10;
 
 private:
+    QTimer *timerId;
+    Apple *apple;
     Ui::GameScreen *ui;
-
+protected:
+    void paintEvent(QPaintEvent* pEvent);
+    void timer(QTimerEvent* tEvent);
 };
 
 #endif // GAMESCREEN_H
