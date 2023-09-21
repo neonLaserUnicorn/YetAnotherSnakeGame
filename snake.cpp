@@ -6,7 +6,7 @@ Snake::Snake(QWidget *parent)
     : QWidget{parent}
 {
     dist = GameScreen::OFFSET;
-    QPoint startPoint = parent->geometry().center();
+    QPoint startPoint = parent->geometry().center()/2;
     direction = QPoint(0,1);
     body.push_back(startPoint);
     body.push_back(startPoint - direction*dist);
@@ -23,6 +23,7 @@ void Snake::draw(QPainter& painter)
 {
     painter.setBrush(QBrush(QColor("green")));
     painter.drawEllipse(QRect(head->x(), head->y(), dist, dist ));
+
     for(auto it = body.begin()+1; it != body.end(); it++)
     {
         painter.setBrush(QBrush(QColor("yellow")));

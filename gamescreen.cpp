@@ -1,6 +1,7 @@
 #include "gamescreen.h"
 #include "ui_gamescreen.h"
 #include "apple.h"
+#include "snake.h"
 
 GameScreen::GameScreen(QWidget *parent, int width, int height) :
     QWidget(parent),
@@ -25,6 +26,7 @@ GameScreen::GameScreen(QWidget *parent, const QRect& geometry) :
 void GameScreen::init()
 {
     apple = new Apple(QPoint(100,100));
+    snake = new Snake(this);
     QTimer* timerId = new QTimer(this);
     connect(timerId, &QTimer::timeout, this, &GameScreen::redraw);
     timerId->start(TIME);
@@ -40,6 +42,7 @@ void GameScreen::paintEvent(QPaintEvent* pEvent)
     qDebug("aaaa");
     QPainter paint(this);
     apple->draw(paint);
+    snake->draw(paint);
 }
 
 void GameScreen::redraw()

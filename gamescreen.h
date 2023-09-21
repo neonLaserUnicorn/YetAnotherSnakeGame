@@ -3,7 +3,10 @@
 
 #include <QWidget>
 #include <QTimer>
+
 class Apple;
+class Snake;
+
 namespace Ui {
 class GameScreen;
 }
@@ -23,6 +26,7 @@ private:
     const int TIME = 1000;
     void init();
     Apple *apple;
+    Snake *snake;
     Ui::GameScreen *ui;
 protected slots:
     void paintEvent(QPaintEvent* pEvent);
