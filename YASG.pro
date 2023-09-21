@@ -12,12 +12,14 @@ SOURCES += \
     apple.cpp \
     gamescreen.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    snake.cpp
 
 HEADERS += \
     apple.h \
     gamescreen.h \
-    mainwindow.h
+    mainwindow.h \
+    snake.h
 
 FORMS += \
     gamescreen.ui \
