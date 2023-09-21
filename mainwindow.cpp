@@ -32,13 +32,12 @@ void MainWindow::menuAnimation()
 void MainWindow::on_startButton_clicked()
 {
     qDebug("Начало игры");
-    //TODO: ПЕРЕХОД НА ЭКРАН НАЧАЛА ИГРЫ
     gs = new GameScreen(nullptr, this->geometry());
 
     gs->show();
     gs->activateWindow();
-//    this->hide();
-//    this->close();
+    this->hide();
+
 }
 
 void MainWindow::on_scoreButton_clicked()

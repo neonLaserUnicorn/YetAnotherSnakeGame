@@ -18,13 +18,15 @@ public:
     ~GameScreen();
     static const int OFFSET = 10;
 
+
 private:
-    QTimer *timerId;
+    const int TIME = 1000;
+    void init();
     Apple *apple;
     Ui::GameScreen *ui;
-protected:
+protected slots:
     void paintEvent(QPaintEvent* pEvent);
-    void timer(QTimerEvent* tEvent);
+    void redraw();
 };
 
 #endif // GAMESCREEN_H

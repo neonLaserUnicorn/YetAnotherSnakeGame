@@ -9,10 +9,7 @@ GameScreen::GameScreen(QWidget *parent, int width, int height) :
     ui->setupUi(this);
     setGeometry(0,0, width, height);
     setWindowTitle("YASG");
-    apple = new Apple(QPoint(100,100));
-    timerId = new QTimer(this);
-    timerId->setInterval(100);
-    connect(timerId, SIGNAL(QTimer::timeout), this, SLOT(repaint()));
+    init();
 }
 GameScreen::GameScreen(QWidget *parent, const QRect& geometry) :
     QWidget(parent),
@@ -22,6 +19,15 @@ GameScreen::GameScreen(QWidget *parent, const QRect& geometry) :
     setWindowTitle("YASG");
     this->setGeometry(geometry);
 
+    init();
+}
+
+void GameScreen::init()
+{
+    apple = new Apple(QPoint(100,100));
+    QTimer* timerId = new QTimer(this);
+    connect(timerId, &QTimer::timeout, this, &GameScreen::redraw);
+    timerId->start(TIME);
 }
 GameScreen::~GameScreen()
 {
@@ -31,13 +37,12 @@ GameScreen::~GameScreen()
 void GameScreen::paintEvent(QPaintEvent* pEvent)
 {
     Q_UNUSED(pEvent);
+    qDebug("aaaa");
     QPainter paint(this);
     apple->draw(paint);
 }
 
-void GameScreen::timer(QTimerEvent* tEvent)
+void GameScreen::redraw()
 {
-    Q_UNUSED(tEvent);
-    qDebug("aaa");
-    repaint();
+    update();
 }
