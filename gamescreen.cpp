@@ -29,6 +29,7 @@ void GameScreen::init()
     snake = new Snake(this);
     QTimer* timerId = new QTimer(this);
     connect(timerId, &QTimer::timeout, this, &GameScreen::redraw);
+    connect(this, &GameScreen::turn, snake, &Snake::keyPressEvent);
     timerId->start(TIME);
 }
 GameScreen::~GameScreen()
@@ -39,7 +40,6 @@ GameScreen::~GameScreen()
 void GameScreen::paintEvent(QPaintEvent* pEvent)
 {
     Q_UNUSED(pEvent);
-    qDebug("aaaa");
     QPainter paint(this);
     apple->draw(paint);
     snake->draw(paint);
@@ -48,4 +48,8 @@ void GameScreen::paintEvent(QPaintEvent* pEvent)
 void GameScreen::redraw()
 {
     update();
+}
+void GameScreen::keyPressEvent(QKeyEvent* e)
+{
+    emit turn(e);
 }

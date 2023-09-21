@@ -28,9 +28,12 @@ private:
     Apple *apple;
     Snake *snake;
     Ui::GameScreen *ui;
+    signals:
+    void turn(QKeyEvent* e);
 protected slots:
     void paintEvent(QPaintEvent* pEvent);
     void redraw();
+    void keyPressEvent(QKeyEvent*);
 };
 
 #endif // GAMESCREEN_H

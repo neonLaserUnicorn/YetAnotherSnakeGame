@@ -2,6 +2,7 @@
 #include "snake.h"
 #include "gamescreen.h"
 #include <QPainter>
+#include <QKeyEvent>
 Snake::Snake(QWidget *parent)
     : QWidget{parent}
 {
@@ -21,6 +22,7 @@ QPoint Snake::position() const
 
 void Snake::draw(QPainter& painter)
 {
+    move();
     painter.setBrush(QBrush(QColor("green")));
     painter.drawEllipse(QRect(head->x(), head->y(), dist, dist ));
 
@@ -28,5 +30,37 @@ void Snake::draw(QPainter& painter)
     {
         painter.setBrush(QBrush(QColor("yellow")));
         painter.drawEllipse(QRect(it->x(), it->y(), dist, dist ));
+    }
+}
+void Snake::move()
+{
+    QPoint current = *head;
+    (*head)+=direction*dist;
+    for(auto it = body.begin()+1; it != body.end(); it++)
+    {
+        QPoint temp = *it;
+        *it = current;
+        current = temp;
+    }
+}
+void Snake::keyPressEvent(QKeyEvent* event)
+{
+    qDebug("AASASD");
+    int key = event->key();
+    if(key == Qt::Key_A || key == Qt::Key_Left)
+    {
+        direction = QPoint(-1,0);
+    }
+    if(key == Qt::Key_W || key == Qt::Key_Up)
+    {
+        direction = QPoint(0,-1);
+    }
+    if(key == Qt::Key_D || key == Qt::Key_Right)
+    {
+        direction = QPoint(1,0);
+    }
+    if(key == Qt::Key_S || key == Qt::Key_Down)
+    {
+        direction = QPoint(0,1);
     }
 }

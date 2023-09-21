@@ -18,6 +18,9 @@ private:
     QPoint* head;
     QPoint direction;
     int dist;
+    void move();
+public slots:
+    void keyPressEvent(QKeyEvent*);
 signals:
 
 };
