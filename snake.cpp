@@ -43,7 +43,11 @@ void Snake::move()
         *it = current;
         current = temp;
     }
-    qDebug("%d, %d", position().x(), position().y());
+    //TODO: optimize it
+    if(body.contains(*head + direction*dist))
+    {
+        emit end();
+    }
 }
 void Snake::keyPressEvent(QKeyEvent* event)
 {
@@ -72,6 +76,7 @@ void Snake::grow()
     QPoint tempDirection = *(body.crbegin()+1) - *(body.crbegin());
     QPoint newPiece(body.last()-tempDirection*dist);
     body.push_back(newPiece);
+    head = body.begin();
 }
 QList<QPoint> Snake::getBody() const
 {

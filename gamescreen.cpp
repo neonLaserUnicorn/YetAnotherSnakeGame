@@ -35,6 +35,7 @@ void GameScreen::init()
     QTimer* timerId = new QTimer(this);
     connect(timerId, &QTimer::timeout, this, &GameScreen::redraw);
     connect(this, &GameScreen::turn, snake, &Snake::keyPressEvent);
+    connect(snake, &Snake::end, this, &GameScreen::stop);
     timerId->start(TIME);
 }
 GameScreen::~GameScreen()
@@ -80,4 +81,12 @@ void GameScreen::replace()
     }
     apple->setPosition(newPlace);
     redraw();
+}
+
+void GameScreen::stop()
+{
+    //TODO: remake timer to stop it
+    qDebug("STOP!");
+    this->findChild<QTimer>().stop();
+
 }

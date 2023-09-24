@@ -36,6 +36,7 @@ protected slots:
     void paintEvent(QPaintEvent* pEvent);
     void redraw();
     void keyPressEvent(QKeyEvent*);
+    void stop();
 };
 
 #endif // GAMESCREEN_H

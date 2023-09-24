@@ -24,7 +24,7 @@ private:
 public slots:
     void keyPressEvent(QKeyEvent*);
 signals:
-
+    void end();
 };
 
 #endif // SNAKE_H
