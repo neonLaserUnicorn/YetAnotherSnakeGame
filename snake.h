@@ -14,6 +14,7 @@ public:
     QPoint position() const;
     void draw(QPainter& p);
     void grow();
+    QList<QPoint> getBody() const;
 private:
     QList<QPoint> body;
     QPoint* head;

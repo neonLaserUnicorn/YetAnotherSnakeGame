@@ -13,6 +13,7 @@ public:
     Apple(QPoint pos);
     QPoint pos();
     void draw(QPainter &painter);
+    void setPosition(QPoint &pos);
 };
 
 #endif // APPLE_H

@@ -19,16 +19,18 @@ public:
     explicit GameScreen(QWidget *parent = nullptr, int width = 300, int height = 300);
     explicit GameScreen(QWidget *parent = nullptr, const QRect& geometry = QRect());
     ~GameScreen();
-    static const int OFFSET = 10;
+    static int OFFSET;
 
 
 private:
+    int width, height;
     const int TIME = 1000;
     void init();
     Apple *apple;
     Snake *snake;
     Ui::GameScreen *ui;
-    signals:
+    void replace();
+signals:
     void turn(QKeyEvent* e);
 protected slots:
     void paintEvent(QPaintEvent* pEvent);

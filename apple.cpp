@@ -18,3 +18,7 @@ QPoint Apple::pos()
 {
     return position;
 }
+void Apple::setPosition(QPoint &pos)
+{
+    position = pos;
+}

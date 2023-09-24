@@ -73,3 +73,7 @@ void Snake::grow()
     QPoint newPiece(body.last()-tempDirection*dist);
     body.push_back(newPiece);
 }
+QList<QPoint> Snake::getBody() const
+{
+    return body;
+}
