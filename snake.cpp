@@ -8,6 +8,7 @@ Snake::Snake(QWidget *parent)
 {
     dist = GameScreen::OFFSET;
     QPoint startPoint = parent->geometry().center()/2;
+    startPoint -= QPoint(startPoint.x()%dist, startPoint.y()%dist);
     direction = QPoint(0,1);
     body.push_back(startPoint);
     body.push_back(startPoint - direction*dist);
@@ -42,25 +43,33 @@ void Snake::move()
         *it = current;
         current = temp;
     }
+    qDebug("%d, %d", position().x(), position().y());
 }
 void Snake::keyPressEvent(QKeyEvent* event)
 {
-    qDebug("AASASD");
+
     int key = event->key();
-    if(key == Qt::Key_A || key == Qt::Key_Left)
+    if((key == Qt::Key_A || key == Qt::Key_Left) && direction != QPoint(1,0))
     {
         direction = QPoint(-1,0);
     }
-    if(key == Qt::Key_W || key == Qt::Key_Up)
+    if((key == Qt::Key_W || key == Qt::Key_Up) && direction != QPoint(0,1))
     {
         direction = QPoint(0,-1);
     }
-    if(key == Qt::Key_D || key == Qt::Key_Right)
+    if((key == Qt::Key_D || key == Qt::Key_Right)&& direction != QPoint(-1,0))
     {
         direction = QPoint(1,0);
     }
-    if(key == Qt::Key_S || key == Qt::Key_Down)
+    if((key == Qt::Key_S || key == Qt::Key_Down)&& direction != QPoint(0,-1))
     {
         direction = QPoint(0,1);
     }
+}
+
+void Snake::grow()
+{
+    QPoint tempDirection = *(body.crbegin()+1) - *(body.crbegin());
+    QPoint newPiece(body.last()-tempDirection*dist);
+    body.push_back(newPiece);
 }

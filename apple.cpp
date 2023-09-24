@@ -13,3 +13,8 @@ void Apple::draw(QPainter &painter)
     painter.setBrush(QBrush(QColor("red")));
     painter.drawEllipse(QRect(position.x(), position.y(), GameScreen::OFFSET, GameScreen::OFFSET ));
 }
+
+QPoint Apple::pos()
+{
+    return position;
+}

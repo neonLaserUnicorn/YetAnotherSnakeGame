@@ -47,6 +47,10 @@ void GameScreen::paintEvent(QPaintEvent* pEvent)
 
 void GameScreen::redraw()
 {
+    if(apple->pos()==snake->position())
+    {
+        snake->grow();
+    }
     update();
 }
 void GameScreen::keyPressEvent(QKeyEvent* e)

@@ -13,6 +13,7 @@ public:
     explicit Snake(QWidget *parent = nullptr);
     QPoint position() const;
     void draw(QPainter& p);
+    void grow();
 private:
     QList<QPoint> body;
     QPoint* head;
