@@ -32,7 +32,7 @@ void GameScreen::init()
     height = geometry().height() / OFFSET;
     apple = new Apple(QPoint(100-100%OFFSET,100 -100%OFFSET));
     snake = new Snake(this);
-    QTimer* timerId = new QTimer(this);
+    timerId = new QTimer(this);
     connect(timerId, &QTimer::timeout, this, &GameScreen::redraw);
     connect(this, &GameScreen::turn, snake, &Snake::keyPressEvent);
     connect(snake, &Snake::end, this, &GameScreen::stop);
@@ -53,7 +53,7 @@ void GameScreen::paintEvent(QPaintEvent* pEvent)
 
 void GameScreen::redraw()
 {
-    this->findChild<QTimer>().start(TIME);
+    this->timerId->start(TIME);
     if(apple->pos()==snake->position())
     {
         snake->grow();
@@ -87,6 +87,6 @@ void GameScreen::stop()
 {
     //TODO: remake timer to stop it
     qDebug("STOP!");
-    this->findChild<QTimer>().stop();
+    this->timerId->stop();
 
 }

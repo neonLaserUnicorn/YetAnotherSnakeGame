@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     apple.cpp \
     gamescreen.cpp \
+    gammeoverscreen.cpp \
     main.cpp \
     mainwindow.cpp \
     snake.cpp
@@ -18,11 +19,13 @@ SOURCES += \
 HEADERS += \
     apple.h \
     gamescreen.h \
+    gammeoverscreen.h \
     mainwindow.h \
     snake.h
 
 FORMS += \
     gamescreen.ui \
+    gammeoverscreen.ui \
     mainwindow.ui
 
 # Default rules for deployment.

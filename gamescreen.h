@@ -23,6 +23,7 @@ public:
 
 
 private:
+    QTimer* timerId;
     int width, height;
     const int TIME = 1000;
     void init();
